@@ -1,5 +1,5 @@
-import { Shield, Pill } from "lucide-react";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { Shield } from "lucide-react";
+import { ChineseConnectButton } from "./ChineseConnectButton";
 
 export const Header = () => {
   return (
@@ -23,7 +23,7 @@ export const Header = () => {
             </div>
           </div>
           
-          <ConnectButton />
+          <ChineseConnectButton />
         </div>
       </div>
     </header>
