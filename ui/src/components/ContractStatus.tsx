@@ -1,5 +1,5 @@
-import { Alert, AlertDescription, AlertCircle, CheckCircle2 } from "lucide-react";
-import { Alert as AlertComponent } from "@/components/ui/alert";
+import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useAccount, useChainId } from "wagmi";
 
 interface ContractStatusProps {
@@ -18,7 +18,7 @@ export const ContractStatus = ({ contractAddress, message, isLoading }: Contract
 
   if (!contractAddress) {
     return (
-      <AlertComponent className="mb-6 border-destructive">
+      <Alert className="mb-6 border-destructive">
         <AlertCircle className="h-4 w-4 text-destructive" />
         <AlertDescription>
           <div className="space-y-2">
@@ -34,13 +34,13 @@ export const ContractStatus = ({ contractAddress, message, isLoading }: Contract
             </p>
           </div>
         </AlertDescription>
-      </AlertComponent>
+      </Alert>
     );
   }
 
   if (isLoading) {
     return (
-      <AlertComponent className="mb-6">
+      <Alert className="mb-6">
         <AlertCircle className="h-4 w-4" />
         <AlertDescription>
           <div className="space-y-1">
@@ -49,7 +49,7 @@ export const ContractStatus = ({ contractAddress, message, isLoading }: Contract
             <p className="text-xs text-muted-foreground">Chain ID: {chainId}</p>
           </div>
         </AlertDescription>
-      </AlertComponent>
+      </Alert>
     );
   }
 
@@ -59,7 +59,7 @@ export const ContractStatus = ({ contractAddress, message, isLoading }: Contract
                    message.toLowerCase().includes("failed");
     
     return (
-      <AlertComponent className={`mb-6 ${isError ? "border-destructive" : ""}`}>
+      <Alert className={`mb-6 ${isError ? "border-destructive" : ""}`}>
         {isError ? (
           <AlertCircle className="h-4 w-4 text-destructive" />
         ) : (
@@ -72,12 +72,12 @@ export const ContractStatus = ({ contractAddress, message, isLoading }: Contract
             <p className="text-xs text-muted-foreground">Chain ID: {chainId}</p>
           </div>
         </AlertDescription>
-      </AlertComponent>
+      </Alert>
     );
   }
 
   return (
-    <AlertComponent className="mb-6 border-green-500/20 bg-green-500/5">
+    <Alert className="mb-6 border-green-500/20 bg-green-500/5">
       <CheckCircle2 className="h-4 w-4 text-green-500" />
       <AlertDescription>
         <div className="space-y-1">
