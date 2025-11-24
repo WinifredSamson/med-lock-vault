@@ -1,0 +1,21 @@
+# This workflow is optional - you can also use the git-push script
+name: Auto Push (Manual)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Configure Git
+        run: |
+          git config user.name "WinifredSamson"
+          git config user.email "fcste295558@outlook.com"
+      - name: Push changes
+        run: |
+          git add .
+          git commit -m "Auto commit from workflow" || echo "No changes to commit"
+          git push
+
