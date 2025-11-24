@@ -86,7 +86,7 @@ export const ContractStatus = ({ contractAddress, message, isLoading }: Contract
           <p className="text-xs text-muted-foreground">Chain ID: {chainId}</p>
         </div>
       </AlertDescription>
-    </AlertComponent>
+    </Alert>
   );
 };
 
