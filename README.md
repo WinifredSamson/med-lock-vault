@@ -63,10 +63,24 @@ npm install
 
 Create a `.env.local` file in the `ui` directory:
 
+**Option 1: Copy from example file**
+```bash
+cd ui
+cp .env.example .env.local
+```
+
+**Option 2: Create manually**
+Create a `.env.local` file in the `ui` directory with the following content:
+
 ```env
 VITE_CONTRACT_ADDRESS=0x...  # Contract address after deployment
 VITE_WALLETCONNECT_PROJECT_ID=your_project_id  # Optional, for WalletConnect
 ```
+
+**Important:** 
+- The `.env.local` file is already in `.gitignore` and will not be committed
+- After deploying the contract (see Deployment section below), update `VITE_CONTRACT_ADDRESS` with your deployed contract address
+- You can find the contract address in the deployment output or in `deployments/localhost/EncryptedMedicationRecord.json`
 
 ## Development
 
@@ -86,7 +100,21 @@ In a new terminal:
 npx hardhat deploy --network localhost
 ```
 
-Note the contract address from the output. Update `VITE_CONTRACT_ADDRESS` in `ui/.env.local`.
+The deployment will output the contract address. Example output:
+```
+EncryptedMedicationRecord contract:  0x5FbDB2315678afecb367f032d93F642f64180aa3
+```
+
+**Update the environment variable:**
+1. Copy the contract address from the output
+2. Open `ui/.env.local` (create it if it doesn't exist)
+3. Set `VITE_CONTRACT_ADDRESS` to the deployed address:
+   ```env
+   VITE_CONTRACT_ADDRESS=0x5FbDB2315678afecb367f032d93F642f64180aa3
+   ```
+
+Alternatively, you can find the contract address in:
+- `deployments/localhost/EncryptedMedicationRecord.json` (after deployment)
 
 ### 3. Run Tests (Local)
 
