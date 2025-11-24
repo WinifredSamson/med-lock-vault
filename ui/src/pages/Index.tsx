@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { MedicationCard, Medication } from "@/components/MedicationCard";
 import { MedicationDialog } from "@/components/MedicationDialog";
+import { ContractStatus } from "@/components/ContractStatus";
 import { Button } from "@/components/ui/button";
 import { Plus, Shield, Lock, Loader2 } from "lucide-react";
 import { useAccount } from "wagmi";
@@ -126,21 +127,6 @@ const Index = () => {
     );
   }
 
-  if (!contractAddress) {
-    return (
-      <>
-        <Header />
-        <div className="min-h-[calc(100vh-80px)] flex items-center justify-center bg-gradient-to-b from-background to-medical-secondary/20">
-          <Alert className="max-w-md border-destructive">
-            <AlertCircle className="h-4 w-4 text-destructive" />
-            <AlertDescription>
-              Contract address not configured. Please set VITE_CONTRACT_ADDRESS in your environment variables.
-            </AlertDescription>
-          </Alert>
-        </div>
-      </>
-    );
-  }
 
   return (
     <>
@@ -163,12 +149,11 @@ const Index = () => {
             </Button>
           </div>
 
-          {message && (
-            <Alert className="mb-6">
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription>{message}</AlertDescription>
-            </Alert>
-          )}
+          <ContractStatus 
+            contractAddress={contractAddress}
+            message={message}
+            isLoading={isLoading}
+          />
 
           {isLoading ? (
             <div className="flex items-center justify-center py-16">
